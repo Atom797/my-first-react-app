@@ -1,0 +1,15 @@
+.nav{
+    grid-area: n;
+    background: linear-gradient(0deg, #868686, #2b2929);
+    padding: 10px;
+}
+
+.item {
+    color:azure;
+    text-decoration: none;
+}
+
+.active {
+    color: gold;
+    text-decoration: none;
+}
