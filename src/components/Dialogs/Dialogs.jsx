@@ -24,30 +24,30 @@ const MessageItem = (props) => {
 
 const setActiveMode = ({ isActive }) => isActive ? dialogsCss.active : dialogsCss.dialogsItems;
 
-let dialogsData = [
+let dialogs = [
     {id:0, name:"Зульфия"},
     {id:1, name:"Бабашан"},
     {id:2, name:"Тимур"}
 ];
 
-let messagesData = [
+let messages = [
     {id: 0, message:"Привет!"},
     {id: 1, message:"Хай! БРО!"},
     {id: 2, message:"Го гулять весело!"}
 ]
 
+let dialogsItems = dialogs.map(dialog => <DialogItem name={dialog.name} id={dialog.id} />);
+
+let messagesItems = messages.map(message => <MessageItem message={message.message} />)
+
 const Dialogs = () => {
     return (
         <div className={dialogsCss.dialogs}>
             <div className={dialogsCss.dialogsItems}>
-                <DialogItem name={dialogsData[0].name} id={dialogsData[0].id} />
-                <DialogItem name={dialogsData[1].name} id={dialogsData[1].id} />
-                <DialogItem name={dialogsData[2].name} id={dialogsData[2].id}/>
+                {dialogsItems}
             </div>
             <div className={dialogsCss.messages}>
-                <MessageItem message={messagesData[0].message} />
-                <MessageItem message={messagesData[1].message}/>
-                <MessageItem message={messagesData[2].message}/>
+                {messagesItems}
             </div>
         </div>
     )
