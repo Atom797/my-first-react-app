@@ -1,53 +1,19 @@
-import { NavLink } from 'react-router-dom';
 import dialogsCss from './Dialogs.module.css'
+import DialogItem from './DialogItem/Dialog';
+import MessageItem from './Message/Message'
 
-const DialogItem = (props) => {
+const dialogsItems = (props) => props.dialogs.map(dialog => <DialogItem name={dialog.name} id={dialog.id} />);
 
-    let path = '/dialogs/' + props.id;
+const messagesItems = (props) => props.messages.map(message => <MessageItem message={message.message} />)
 
-    return (
-        <div >
-            <NavLink to={path} className={setActiveMode}>
-                {props.name}
-            </NavLink>
-        </div>
-    )
-}
-
-const MessageItem = (props) => {
-    return (
-        <div className={dialogsCss.message}>
-            {props.message}
-        </div>
-    )
-}
-
-const setActiveMode = ({ isActive }) => isActive ? dialogsCss.active : dialogsCss.dialogsItems;
-
-let dialogs = [
-    {id:0, name:"Зульфия"},
-    {id:1, name:"Бабашан"},
-    {id:2, name:"Тимур"}
-];
-
-let messages = [
-    {id: 0, message:"Привет!"},
-    {id: 1, message:"Хай! БРО!"},
-    {id: 2, message:"Го гулять весело!"}
-]
-
-let dialogsItems = dialogs.map(dialog => <DialogItem name={dialog.name} id={dialog.id} />);
-
-let messagesItems = messages.map(message => <MessageItem message={message.message} />)
-
-const Dialogs = () => {
+const Dialogs = (props) => {
     return (
         <div className={dialogsCss.dialogs}>
             <div className={dialogsCss.dialogsItems}>
-                {dialogsItems}
+                {dialogsItems(props)}
             </div>
             <div className={dialogsCss.messages}>
-                {messagesItems}
+                {messagesItems(props)}
             </div>
         </div>
     )
