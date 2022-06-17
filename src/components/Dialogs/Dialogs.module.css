@@ -1,21 +1,42 @@
 .dialogs {
     display: grid;
-    grid-template-columns: 2fr 10fr;
+    grid-template-columns: 3fr 10fr;
+    grid-template-areas: 
+    "dialogs messages"
+    "dialogs newMessage";
 }
 
-.dialogsItems{
-    color:azure;
-    padding: 10px;
-    text-decoration: none;
+.messages {
+    grid-area: messages;
+    margin:10px;
 }
 
-.active{
-    color: gold;
-    padding: 10px;
-    text-decoration: none;
+.listDialogs{
+    grid-area: dialogs;
 }
 
+.dialogsItems {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
 
-.messages{
-    padding: 10px;
+.dialogsItems a {
+    width: 90%;
+    display: grid;
+    grid-template-columns: 1fr 9fr;
+    padding-left: 10px;
+    height: 44px;
+    line-height: 44px;
+    font-size: 20px;
+    margin: 10px;
+    position: relative;
+    transition: .3s linear;
+    border: 1px solid #61a5e6;
+    border-radius: 10px;
+}
+
+.newMessage{
+    grid-area: newMessage;
+    margin:10px;
 }
