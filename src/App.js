@@ -9,6 +9,7 @@ import Settings from './components/Settings/Settings'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 function App(props) {
+
   return (
     <BrowserRouter>
       <div className='app-wrapper'>
@@ -19,7 +20,7 @@ function App(props) {
             <Route path="/profile" element={
             <Profile 
             profileData={props.state.profilePage} 
-            addPost={props.addPost} 
+            dispatch={props.dispatch} 
             updateNewPostText={props.updateNewPostText}/>
             } />
             <Route path="/dialogs/*" element={<Dialogs dialogsData={props.state.dialogPage}/>} />
