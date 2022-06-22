@@ -1,3 +1,7 @@
+import dialogsReducer from "./dialogsReducer";
+import profileReducer from "./profileReducer";
+import sidebarReducer from "./sidebarReducer";
+
 const store = {
     _rerenderEntireTree() { },
 
@@ -14,6 +18,7 @@ const store = {
                 { id: 1, message: "Хай! БРО!" },
                 { id: 2, message: "Го гулять весело!" }
             ],
+            newTextMessage: '',
         },
 
 
@@ -24,49 +29,24 @@ const store = {
             ],
             newTextForPost: '',
         },
+
+        sidebar : {},
     },
 
     getState() {
         return this._state;
     },
 
-    addPost() {
-        let newPost = {
-            id: 3,
-            message: this._state.profilePage.newTextForPost,
-            likesCount: 1,
-            avatar: "https://bipbap.ru/wp-content/uploads/2021/06/5758596.jpg"
-        }
-        this._state.profilePage.postData.push(newPost);
-        this._state.profilePage.newTextForPost = '';
-        this._rerenderEntireTree(this._state);
-    },
-
-    updateNewPostText(newText) {
-        this._state.profilePage.newTextForPost = newText;
-        this._rerenderEntireTree(this._state);
-    },
-
-    subscride(observer) {
+    subscribe(observer) {
         this._rerenderEntireTree = observer;
     },
 
     dispatch(action) {
-        if (action.type === 'ADD-POST') {
-            let newPost = {
-                id: 3,
-                message: this._state.profilePage.newTextForPost,
-                likesCount: 1,
-                avatar: "https://bipbap.ru/wp-content/uploads/2021/06/5758596.jpg"
-            }
-            this._state.profilePage.postData.push(newPost);
-            this._state.profilePage.newTextForPost = '';
-            this._rerenderEntireTree(this._state);
-        } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
-            this._state.profilePage.newTextForPost = action.newText;
-            this._rerenderEntireTree(this._state);
-        }
-    }
-}
+        this._state.dialogPage = dialogsReducer(this._state.dialogPage, action);
+        this._state.profilePage = profileReducer(this._state.profilePage, action);
+        this._state.sidebar = sidebarReducer(this._state.sidebar, action);
+        this._rerenderEntireTree(this._state);
+    },
+};
 
 export default store;

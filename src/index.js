@@ -18,7 +18,7 @@ let rerenderEntireTree = (state) => {
 
 rerenderEntireTree(store.getState());
 
-store.subscride(rerenderEntireTree);
+store.subscribe(rerenderEntireTree);
 
 
 reportWebVitals();
