@@ -4,9 +4,9 @@ import DialogItem from './DialogItem/Dialog';
 import MessageItem from './Message/Message'
 
 const Dialogs = (props) => {
-    let dialogsItems = props.dialogsData.dialogs.map(dialog => <DialogItem name={dialog.name} id={dialog.id} profileAvatar={dialog.profileAvatar} />);
+    let dialogsItems = props.dialogsData.dialogs.map(dialog => <DialogItem key={dialog.id} name={dialog.name} id={dialog.id} profileAvatar={dialog.profileAvatar} />);
 
-    let messagesItems = props.dialogsData.messages.map(message => <MessageItem message={message.message} idSender={message.idSender} idRecipient={message.idRecipient} />)
+    let messagesItems = props.dialogsData.messages.map(message => <MessageItem key ={message.id} message={message.message} idSender={message.idSender} idRecipient={message.idRecipient} />)
 
     let addNewMessage = () => {
         props.addNewMessage();

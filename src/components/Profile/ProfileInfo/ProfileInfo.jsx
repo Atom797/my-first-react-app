@@ -3,7 +3,7 @@ const ProfileInfo = () => {
     return (
         <div>
             <div>
-                <img src="https://cdn.igromania.ru/mnt/news/3/3/2/9/c/1/74637/6ad8781a8413453c_1200xH.jpg" />
+                <img className={profileInfoCss.img} src="https://slovnet.ru/wp-content/uploads/2018/08/1-6.png" />
             </div>
             <div className={profileInfoCss.descriptionBlock}>
                 ava+ desctiption

@@ -2,6 +2,7 @@
   display: grid;
   margin: 0 auto;
   width: 1200px;
+  background: white;
   grid-template-rows: 60px 1fr;
   grid-template-columns: 1fr 3fr;
   grid-template-areas:
@@ -11,5 +12,8 @@
 
 .app-wrapper-content {
   grid-area: c;
-  background: linear-gradient(90deg, #868686, #2b2929);
+  background: white;
+  margin: 10px;
+  border-radius: 20px;
+  border: 1px solid #333;
 }

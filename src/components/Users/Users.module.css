@@ -1,0 +1,48 @@
+.mainContainer {
+    display: grid;
+    padding: 10px;
+    margin: 50px;
+    grid-template-columns: 1fr 10fr;
+    grid-template-areas:
+        "f h"
+        "f h";
+}
+
+.followContainer {
+    grid-area: f;
+    padding: 10px;
+}
+
+.informationContainer {
+    grid-area: h;
+    display: grid;
+    grid-template-columns: 10fr 1fr;
+    padding: 10px;
+    border: 1px solid #61a5e6;
+    border-radius: 10px;
+}
+
+.img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50px;
+}
+
+.userContent {
+    padding: 10px;
+}
+
+.mainContainer button {
+    background-color: white; /* Green */
+    color: black;
+    width: 70px;
+    height: 30px;
+    border: 2px solid #61a5e6;
+    border-radius: 20px;
+    transition-duration: 0.4s;
+}
+
+.mainContainer button:hover {
+    background-color:  #61a5e6; /* Green */
+    color: white;
+}

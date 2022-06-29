@@ -3,7 +3,7 @@ import profileCss from './MyPosts.module.css'
 import Post from './Post/Post'
 const MyPosts = (props) => {
 
-    let postItems = props.postData.map(post => <Post message={post.message} avatar={post.avatar} likesCount = {post.likesCount}/>)
+    let postItems = props.postData.map(post => <Post key={post.id} message={post.message} avatar={post.avatar} likesCount = {post.likesCount}/>)
     let newPostElement = React.createRef();
 
     let addPost = () => {

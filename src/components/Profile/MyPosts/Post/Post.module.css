@@ -1,5 +1,11 @@
 .item{
-    color:azure;
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+    color: black;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 20px;
+    border: 2px solid rgba(41, 180, 235, 0.5) ;
 }
 
 .item.active{

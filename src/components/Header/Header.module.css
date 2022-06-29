@@ -1,8 +1,11 @@
 .header{
     grid-area: h;
-    background: linear-gradient(45deg, #4e4e4e, #000000);
+    border-color: black;
+    margin-bottom: 10px;
+    background-color: white;
 }
 
 .header img{
+    margin: 10px;
     width: 50px;
 }

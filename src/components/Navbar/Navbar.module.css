@@ -1,11 +1,14 @@
 .nav{
     grid-area: n;
-    background: linear-gradient(0deg, #868686, #2b2929);
     padding: 10px;
+    border-radius: 20px;
+    border: 1px solid #333;
+    background-color: white;
+    margin: 10px;
 }
 
 .item {
-    color:azure;
+    color:rgb(16, 17, 17);
     text-decoration: none;
 }
 

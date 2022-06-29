@@ -18,16 +18,17 @@ const profileReducer = (state = initialState, action) => {
                 likesCount: 1,
                 avatar: "https://bipbap.ru/wp-content/uploads/2021/06/5758596.jpg"
             }
-            let stateCopy = {...state};
-            stateCopy.postData = [...state.postData]
-            stateCopy.postData.push(newPost);
-            stateCopy.newTextForPost = '';
-            return stateCopy;
+            return {
+                ...state,
+                postData:[...state.postData, newPost],
+                newTextForPost: ''
+            };
         }
         case UPDATE_NEW_POST_TEXT:{
-            let stateCopy = {...state};
-            stateCopy.newTextForPost = action.newText;
-            return stateCopy;
+            return {
+                ...state,
+                newTextForPost: action.newText
+            };
         }
         default:
             return state
