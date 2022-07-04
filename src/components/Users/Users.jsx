@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios'
 import usersCss from './Users.module.css'
 import userPhoto from '../../assets/images/user.png'
+import { NavLink } from 'react-router-dom';
 
 let Users = (props) => {
 
@@ -23,7 +24,9 @@ let Users = (props) => {
                     <div key={i.id} className={usersCss.mainContainer}>
 
                         <div className={usersCss.followContainer}>
-                            <img src={i.profileAvatar != null ? i.profileAvatar : userPhoto} className={usersCss.img} />
+                            <NavLink to={'/profile/' + i.id}>
+                                <img src={i.photos.small != null ? i.photos.small : userPhoto} className={usersCss.img}   />
+                            </NavLink>
                             {i.followed ? <button onClick={() => { props.unfollow(i.id) }}>Unfollow</button> : <button onClick={() => { props.follow(i.id) }}>Follow</button>}
                         </div>
 
