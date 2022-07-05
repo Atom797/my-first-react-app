@@ -28,19 +28,22 @@ let Users = (props) => {
                                 <img src={i.photos.small != null ? i.photos.small : userPhoto} className={usersCss.img} />
                             </NavLink>
                             {i.followed ?
-                                <button onClick={() => {
-
+                                <button disabled={props.followingInProgress.some(id => id === i.id)} onClick={() => {
+                                    props.toggleFollowingProgress(true, i.id)
                                     usersAPI.deleteUnfollowUser(i.id).then(data => {
                                         if (data.resultCode == 0) {
                                             props.unfollow(i.id)
                                         }
+                                        props.toggleFollowingProgress(false, i.id)
                                     })
                                 }}>Unfollow</button>
-                                : <button onClick={() => {
+                                : <button disabled={props.followingInProgress.some(id => id === i.id)} onClick={() => {
+                                    props.toggleFollowingProgress(true, i.id)
                                     usersAPI.postFollowUser(i.id).then(data => {
                                         if (data.resultCode == 0) {
                                             props.follow(i.id)
                                         }
+                                        props.toggleFollowingProgress(false, i.id)
                                     })
                                 }}>Follow</button>}
                         </div>
@@ -65,7 +68,7 @@ let Users = (props) => {
                     </div>
                 )
             }
-        </div>
+        </div >
     )
 }
 

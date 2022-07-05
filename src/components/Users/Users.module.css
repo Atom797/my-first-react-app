@@ -33,7 +33,7 @@
 }
 
 .mainContainer button {
-    background-color: white; /* Green */
+    background-color: white;
     color: black;
     width: 70px;
     height: 30px;
@@ -43,7 +43,7 @@
 }
 
 .mainContainer button:hover {
-    background-color:  #61a5e6; /* Green */
+    background-color:  #61a5e6;
     color: white;
 }
 
