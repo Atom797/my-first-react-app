@@ -10,7 +10,11 @@ class ProfileContainer extends React.Component {
 
   componentDidMount() {
     let profileId = this.props.router.params.profileId;
-    if (!profileId) profileId = 2;
+    if (!profileId && this.props.myId != null) {
+      profileId = this.props.myId;
+    } else if (!profileId && !this.props.myId) {
+      profileId = 2;
+    }
     axios.get(`https://social-network.samuraijs.com/api/1.0/profile/` + profileId).then(response => {
       this.props.setUserProfile(response.data);
     })
@@ -23,9 +27,12 @@ class ProfileContainer extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  profile: state.profilePage.profile
-})
+const mapStateToProps = (state) => {
+  return ({
+    profile: state.profilePage.profile,
+    myId: state.authUser.id
+  })
+}
 
 function withRouter(Component) {
   function ComponentWithRouterProp(props) {
