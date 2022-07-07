@@ -18,8 +18,6 @@ const Dialogs = (props) => {
         props.onMessageChange(text);
     }
 
-    if (!props.isAuth) return <Navigate to='/login' />
-
     return (
         <div className={dialogsCss.dialogs}>
             <div className={dialogsCss.listDialogs}>
