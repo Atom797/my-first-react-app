@@ -1,11 +1,12 @@
 import React from 'react';
 import { updateNewMessageTextActionCreator, addMessageActionCreator } from '../../redux/dialogsReducer'
 import Dialogs from './Dialogs'
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 
 const mapStateToOrops = (state) => {
     return {
-        dialogsData: state.dialogPage
+        dialogsData: state.dialogPage,
+        isAuth: state.authUser.isAuth
     }
 }
 
