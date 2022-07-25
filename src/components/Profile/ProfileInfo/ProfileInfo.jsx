@@ -1,5 +1,6 @@
 import Preloader from "../../common/Preloader/Preloader";
 import profileInfoCss from "./ProfileInfo.module.css";
+import ProfileStatus from "./ProfileStatus";
 
 
 
@@ -32,6 +33,9 @@ const ProfileInfo = (props) => {
                 />
             </div>
             <div className={profileInfoCss.descriptionBlock}>
+                <div>
+                    Статус: <ProfileStatus status={props.status} updateStatus={props.updateStatus} />
+                </div>
                 <div>
                     Мое имя: {props.profile.fullName}
                 </div>
