@@ -1,6 +1,5 @@
 import { profileAPI, usersAPI } from '../api/api'
 const ADD_POST = 'ADD_POST';
-const UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
 const SET_USER_STATUS = 'SET_USER_STATUS';
 
@@ -9,7 +8,6 @@ let initialState = {
         { id: 0, message: "Hi! Nice dic", likesCount: 1, avatar: "https://img4.goodfon.ru/wallpaper/nbig/4/1b/kapitan-amerika-amerika-kapitan-shchit-zvezda-captain-americ.jpg" },
         { id: 0, message: "Thanks!", likesCount: 2, avatar: "https://i.pinimg.com/474x/cb/2f/e7/cb2fe787ad597bef4c6238c6bdc1d5b6.jpg" }
     ],
-    newTextForPost: '',
     profile: null,
     status: ""
 };
@@ -19,20 +17,13 @@ const profileReducer = (state = initialState, action) => {
         case ADD_POST: {
             let newPost = {
                 id: 3,
-                message: state.newTextForPost,
+                message: action.newPostBody,
                 likesCount: 1,
                 avatar: "https://bipbap.ru/wp-content/uploads/2021/06/5758596.jpg"
             }
             return {
                 ...state,
-                postData: [...state.postData, newPost],
-                newTextForPost: ''
-            };
-        }
-        case UPDATE_NEW_POST_TEXT: {
-            return {
-                ...state,
-                newTextForPost: action.newText
+                postData: [...state.postData, newPost]
             };
         }
         case SET_USER_PROFILE: {
@@ -52,8 +43,7 @@ const profileReducer = (state = initialState, action) => {
     }
 };
 
-export const addPostActionCreator = () => ({ type: ADD_POST });
-export const updateNewPostTextActionCreator = (text) => ({ type: UPDATE_NEW_POST_TEXT, newText: text })
+export const addPostActionCreator = (newPostBody) => ({ type: ADD_POST, newPostBody });
 export const setUserProfile = (profile) => ({ type: SET_USER_PROFILE, profile })
 export const setStatus = (status) => ({ type: SET_USER_STATUS, status })
 
