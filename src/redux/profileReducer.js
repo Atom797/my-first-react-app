@@ -2,11 +2,12 @@ import { profileAPI, usersAPI } from '../api/api'
 const ADD_POST = 'ADD_POST';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
 const SET_USER_STATUS = 'SET_USER_STATUS';
+const DELETE_POST = 'DELETE_POST';
 
 let initialState = {
     postData: [
         { id: 0, message: "Hi! Nice dic", likesCount: 1, avatar: "https://img4.goodfon.ru/wallpaper/nbig/4/1b/kapitan-amerika-amerika-kapitan-shchit-zvezda-captain-americ.jpg" },
-        { id: 0, message: "Thanks!", likesCount: 2, avatar: "https://i.pinimg.com/474x/cb/2f/e7/cb2fe787ad597bef4c6238c6bdc1d5b6.jpg" }
+        { id: 1, message: "Thanks!", likesCount: 2, avatar: "https://i.pinimg.com/474x/cb/2f/e7/cb2fe787ad597bef4c6238c6bdc1d5b6.jpg" }
     ],
     profile: null,
     status: ""
@@ -38,6 +39,12 @@ const profileReducer = (state = initialState, action) => {
                 status: action.status
             }
         }
+        case DELETE_POST: {
+            return {
+                ...state,
+                postData: state.postData.filter(el => el.id != action.postId )
+            }
+        }
         default:
             return state
     }
@@ -46,6 +53,7 @@ const profileReducer = (state = initialState, action) => {
 export const addPostActionCreator = (newPostBody) => ({ type: ADD_POST, newPostBody });
 export const setUserProfile = (profile) => ({ type: SET_USER_PROFILE, profile })
 export const setStatus = (status) => ({ type: SET_USER_STATUS, status })
+export const deletePost = (postId) => ({ type: DELETE_POST, postId })
 
 export const getProfile = (userId) => {
     return (dispatch) => {
