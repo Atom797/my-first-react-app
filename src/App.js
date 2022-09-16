@@ -1,4 +1,6 @@
 import React from 'react';
+import { Provider } from 'react-redux';
+import store from './redux/redux-store'
 import './App.css';
 import HeaderContainer from './components/Header/HeaderContainer'
 import Navbar from './components/Navbar/Navbar'
@@ -54,4 +56,17 @@ const mapStateToProps = (state) => ({
 })
 
 
-export default connect(mapStateToProps, { initializeApp })(App);
+let AppContainer =  connect(mapStateToProps, { initializeApp })(App);
+
+
+const AppMain = () =>{
+  return(
+    <React.StrictMode>
+      <Provider store={store}>
+        <AppContainer/>
+      </Provider>
+    </React.StrictMode>
+  )
+}
+
+export default AppMain;
